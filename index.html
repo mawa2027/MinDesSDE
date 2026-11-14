@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ministerio de Desarrollo Social</title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header" id="header">
+    <div class="header__inner container">
+        <a href="index.html" class="header__logo">
+            <svg width="150" height="60" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+                <path d="M70,25 C40,25 20,45 20,75 C20,110 60,140 130,155 C110,145 45,125 45,75 C45,55 55,45 70,45 C85,45 95,55 95,55 L105,40 C105,40 90,25 70,25 Z" fill="#526685" />
+                <circle cx="75" cy="20" r="18" fill="#526685" />
+                <path d="M130,55 C130,55 140,45 155,45 C170,45 180,55 180,75 C180,110 140,150 70,165 C90,155 155,135 155,85 C155,65 145,55 130,55 Z" fill="#7C96C4" />
+                <circle cx="125" cy="30" r="18" fill="#7C96C4" />
+                <path d="M100,80 C85,80 75,90 75,105 C75,125 100,135 135,125 C120,135 85,135 85,110 C85,95 95,90 105,90 C115,90 125,95 125,95 L135,80 C135,80 115,80 100,80 Z" fill="#E30613" />
+                <circle cx="95" cy="85" r="12" fill="#E30613" />
+            </svg>
+            <div class="logo-titles">
+                <span class="logo-text">Ministerio de Desarrollo Social</span>
+                <span class="logo-sub">Santiago del Estero</span>
+            </div>
+        </a>
+
+        <nav class="nav-brand" id="mainNav" aria-label="Navegación principal">
+            <ul class="nav-links">
+                <li class="nav-item-dropdown">
+                    <a href="pages/autoridades.html" class="nav-links nav-dropdown-toggle">Institución <span class="arrow">⌄</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pages/autoridades.html">Autoridades</a></li>
+                        <li><a href="pages/autoridades.html#institucion">Misión y Visión</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item-dropdown nav-areas">
+                    <a href="#subsecretarias" class="nav-links nav-dropdown-toggle">Áreas <span class="arrow">⌄</span></a>
+                    <div class="areas-mega-menu">
+                        <div class="areas-mega-column areas-mega-main">
+                            <a href="pages/desarrollo-social.html" class="areas-mega-title">Subsecretaría de Desarrollo Social <span class="arrow">›</span></a>
+                            <div class="areas-mega-submenu">
+                                <div class="areas-mega-group">
+                                    <a href="pages/desarrollo-social.html#desarrollo" class="areas-mega-title secondary">Dirección General de Desarrollo Social <span class="arrow">›</span></a>
+                                    <a href="pages/desarrollo-social.html#asistencia">Asistencia Directa</a>
+                                    <a href="pages/desarrollo-social.html#microemprendimiento">Micro Emprendimiento</a>
+                                    <a href="pages/desarrollo-social.html#comedores">Comedores Comunitarios</a>
+                                </div>
+                                <div class="areas-mega-group">
+                                    <a href="pages/desarrollo-social.html#adultos" class="areas-mega-title secondary">Dirección General de Adultos Mayores <span class="arrow">›</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="areas-mega-column">
+                            <a href="pages/promocion-humana.html" class="areas-mega-title">Subsecretaría de Promoción Humana</a>
+                        </div>
+                        <div class="areas-mega-column">
+                            <a href="pages/defensa-civil.html" class="areas-mega-title">Subsecretaría de Defensa Civil</a>
+                        </div>
+                    </div>
+                </li>
+
+                <li><a href="pages/programas.html" class="nav-links">Programas</a></li>
+                <li><a href="pages/requisitos.html" class="nav-links">Trámites</a></li>
+                <li><a href="#noticias" class="nav-links">Noticias</a></li>
+                <li><a href="pages/contacto.html" class="nav-links">Contacto</a></li>
+            </ul>
+        </nav>
+        <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menú">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ========== HERO CAROUSEL ========== -->
+<section class="hero" id="heroCarousel">
+    <div class="hero__slides" id="heroSlides"></div>
+  
+
+    <button class="hero__prev" id="heroPrev" aria-label="Anterior">&#10094;</button>
+    <button class="hero__next" id="heroNext" aria-label="Siguiente">&#10095;</button>
+    <div
+        class="hero__dots"
+        id="heroDots">
+    </div>
+
+</section>
+
+<!-- ========== SUBSECRETARÍAS ========== -->
+<section class="ingresos" id="subsecretarias">
+    <div class="container">
+        <h2 class="section-title">Subsecretarías</h2>
+        <div class="ingresos__grid">
+
+        <!-- Subsecretaría de Desarrollo Social -->
+        <a href="pages/desarrollo-social.html" class="ingreso-card">
+            <div class="ingreso-card__img">
+            <img src="img/RamiroBanco.webp" alt="Desarrollo Social">
+        </div>
+        <div class="ingreso-card__body" style="flex-direction:column; align-items:flex-start; gap:4px;">
+            <span class="ingreso-card__label">Desarrollo Social</span>
+            <span class="subsec-desc">Asistencia directa, microemprendimientos, comedores comunitarios y atención integral a adultos mayores</span>
+        </div>
+        </a>
+
+        <!-- Subsecretaría de Promoción Humana -->
+        <a href="pages/promocion-humana.html" class="ingreso-card">
+            <div class="ingreso-card__img">
+                <img src="img/promocionhumana.png" alt="Promoción Humana">
+        </div>
+        <div class="ingreso-card__body" style="flex-direction:column; align-items:flex-start; gap:4px;">
+            <span class="ingreso-card__label">Promoción Humana</span>
+            <span class="subsec-desc">Viviendas sociales, fachadas, planos, requisitos y novedades</span>
+        </div>
+        </a>
+
+        <!-- Subsecretaría de Defensa Civil -->
+        <a href="pages/defensa-civil.html" class="ingreso-card">
+            <div class="ingreso-card__img">
+            <img src="img/defensacivil.jfif" alt="Defensa Civil">
+        </div>
+        <div class="ingreso-card__body" style="flex-direction:column; align-items:flex-start; gap:4px;">
+            <span class="ingreso-card__label">Defensa Civil</span>
+            <span class="subsec-desc">Prevención, respuesta ante emergencias y desastres naturales</span>
+        </div>
+        </a>
+    </div>
+    </div>
+</section>
+
+<!-- ========== ÁREAS Y PROGRAMAS ========== -->
+<section class="ingresos" id="areas" style="background: var(--color-bg); padding-top: 0; padding-bottom: 48px;">
+    <div class="container">
+        <h2 class="section-title">Áreas y Programas</h2>
+        <div class="areas-grid">
+
+        <a href="pages/Inicio_funerarios.html" class="area-card">
+            <div class="area-icon">🕊️</div>
+            <h4>Servicios Fúnebres</h4>
+            <p>Servicio funebre gratuito para familias vulnerables</p>
+        </a>
+
+        <a href="pages/autoridades.html" class="area-card">
+            <div class="area-icon">👔</div>
+            <h4>Autoridades</h4>
+            <p>Estructura institucional y autoridades del ministerio</p>
+        </a>
+
+        <a href="pages/comedores.html" class="area-card">
+            <div class="area-icon">🍽️</div>
+            <h4>Comedores Comunitarios</h4>
+            <p>Refuerzo alimentario para niños en situación de vulnerabilidad</p>
+        </a>
+        <a href="pages/nutricion-comedores.html" class="area-card">
+            <div class="area-icon">🍏</div>
+            <h4>Nutrición</h4>
+            <p>Control nutricional y solicitudes de insumos para comedores provinciales</p>
+          </a>
+
+        <a href="pages/promocion-humana.html" class="area-card">
+            <div class="area-icon">🏠</div>
+            <h4>Viviendas Sociales</h4>
+            <p>Construcción de viviendas para familias en situación precaria</p>
+        </a>
+        <!-- Atención Directa -->
+    <a href="pages/asistencia-directa.html" class="area-card">
+        <div class="area-icon">🚨</div>
+        <h4>Atención Directa</h4>
+        <p>Asistencia de emergencia y subsidios urgentes para familias vulnerables</p>
+      </a>
+  
+      <!-- Área Redes -->
+      <a href="pages/area-redes.html" class="area-card">
+        <div class="area-icon">🤝</div>
+        <h4>Área Redes</h4>
+        <p>Articulación institucional y registro de organizaciones comunitarias</p>
+      </a>
+
+        <a href="https://proyecto-emprendedores.onrender.com/" class="area-card">
+            <div class="area-icon">💼</div>
+            <h4>Economía Social</h4>
+            <p>Microemprendimientos y plan Santiago Productivo</p>
+        </a>
+
+        <a href="pages/desarrollo-social.html#tarjetas" class="area-card">
+            <div class="area-icon">💳</div>
+            <h4>Tarjetas Sociales</h4>
+            <p>Tarjetas para familias vulnerables y celíacos</p>
+        </a>
+
+        <a href="pages/programas.html" class="area-card">
+            <div class="area-icon">📋</div>
+            <h4>Todos los Programas</h4>
+            <p>Ver todos los programas y beneficios disponibles</p>
+        </a>
+
+    </div>
+    </div>
+</section>
+
+<!-- ========== NOTICIAS ========== -->
+<section class="noticias" id="noticias">
+    <div class="container">
+        <h2 class="section-title">Noticias Institucionales</h2>
+        
+        <div class="noticias__grid" id="noticiasGrid"></div>
+        
+    </div>
+</section>
+
+    <!-- GALERÍA DE VIDEOS -->
+    <section class="videos" id="videos">
+        <div class="container">
+            <h2 class="section-title">Galería de Videos</h2>
+            <div class="videos-grid" id="videosGrid">
+        </div>
+        </div>
+        
+    </section>
+
+<!-- MODAL DETALLE DE NOTICIA -->
+<div id="noticiaModal" class="noticia-modal" aria-hidden="true">
+
+    <div class="noticia-modal__fondo"></div>
+
+    <div class="noticia-modal__contenido">
+
+        <button
+            type="button"
+            class="noticia-modal__cerrar"
+            id="cerrarNoticiaModal"
+            aria-label="Cerrar noticia">
+            ×
+        </button>
+
+        <div class="noticia-modal__imagen" id="noticiaModalImagen"></div>
+
+        <div class="noticia-modal__informacion">
+
+            <span
+                class="noticia-modal__categoria"
+                id="noticiaModalCategoria">
+            </span>
+
+            <h2 id="noticiaModalTitulo"></h2>
+
+            <p
+                class="noticia-modal__fecha"
+                id="noticiaModalFecha">
+            </p>
+
+            <div
+                class="noticia-modal__texto"
+                id="noticiaModalTexto">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ========== MAPA Y CONTACTO ========== -->
+<section id="contacto" style="padding: 56px 0; background: var(--color-white);">
+    <div class="container">
+        <h2 class="section-title">Ubicación y Contacto</h2>
+        <iframe
+        src="https://www.google.com/maps?q=Ministerio%20de%20Desarrollo%20Social%20Santiago%20del%20Estero&output=embed"
+        width="100%"
+        height="380"
+        style="border:0; border-radius:16px; display:block;"
+        loading="lazy"
+        title="Ubicación del Ministerio">
+    </iframe>
+    <div style="margin-top:20px; color: var(--color-text);">
+        <p><strong>Dirección:</strong> Saenz Peña N° 340, Santiago del Estero (4200) Argentina</p>
+        <p><strong>Teléfono:</strong> (0385) 4283139 / 73 / 97</p>
+        <p><strong>Email:</strong> <a href="mailto:cministeriodesarrollosocial@mdssde.gob.ar" style="color: var(--color-primary);">cministeriodesarrollosocial@mdssde.gob.ar</a></p>
+    </div>
+    </div>
+</section>
+
+<section id="ministerio" style="padding: 56px 0; background: var(--color-white);">
+    <div class="container">
+        <h2 class="section-title">MINISTERIOS</h2>
+        <ul>
+            <li><a href="http://meconse.gob.ar/" style="color: var(--color-primary);">Ministerio de Economia</a></li>
+            <li><a href="https://www.meducacionsantiago.gob.ar/" style="color: var(--color-primary);">Ministerio de Educacion, Ciencia y Tecnologia</a></li>
+            <li><a href="https://msaludsgo.gov.ar/web/"style="color: var(--color-primary);">Ministerio de Salud</a></li>
+            <li>Ministerio de Justicia y Derechos Humanos</li>
+            <li>Ministerio de Obras Públicas, Agua y Medio Ambiente</li>
+            <li>Ministerio de la Producción</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <div class="container footer__inner">
+        <div class="footer__brand">
+        <img src="img/Logo de SDE.png" alt="Logo Santiago del Estero">
+        <p><strong>Ministerio de Desarrollo Social</strong><br><span>Gobierno de Santiago del Estero</span></p>
+    </div>
+    <div class="footer__links">
+        <h5>Subsecretarías</h5>
+        <ul>
+            <li><a href="pages/desarrollo-social.html">Desarrollo Social</a></li>
+            <li><a href="pages/promocion-humana.html">Promoción Humana</a></li>
+            <li><a href="pages/defensa-civil.html">Defensa Civil</a></li>
+        </ul>
+    </div>
+    <div class="footer__links">
+        <h5>Áreas</h5>
+        <ul>
+            <li><a href="pages/desarrollo-social.html#adultos">Dirección General de Adultos Mayores</a></li>
+            <li><a href="pages/Inicio_funerarios.html">Servicios Fúnebres</a></li>
+            <li><a href="pages/programas.html">Programas</a></li>
+            <li><a href="pages/contacto.html">Contacto</a></li>
+        </ul>
+    </div>
+    <div class="footer__contact">
+        <h5>Redes</h5>
+        <p><a href="https://www.facebook.com/profile.php?id=61555557497190" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+        <h5 style="margin-top:16px;">Institución</h5>
+
+<p>
+    <a href="pages/autoridades.html">
+        Autoridades
+    </a>
+</p>
+
+    </div>
+    </div>
+    <div class="footer__bottom">
+        <p>© 2026 SIDES — Santiago del Estero</p>
+    </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script src="js/contenidos-publicos.js?v=2"></script>
+</body>
+</html>
