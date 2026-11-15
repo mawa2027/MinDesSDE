@@ -26,7 +26,7 @@ module.exports = {
   almacenamiento: String(env.ALMACENAMIENTO || "disco").trim().toLowerCase(),
   // donde quedan los archivos recién subidos mientras se validan (después pasan al almacén elegido)
   carpetaTemporal: path.join(require("node:os").tmpdir(), "nexo-subidas"),
-  carpetaFrontend: path.join(__dirname, "..", "..", "frontend"),
+  carpetaFrontend: path.join(__dirname, "..", ".."),
   maxAdjuntoBytes: 10 * 1024 * 1024,
   maxAdjuntos: 8,
   intentosLogin: { maximo: 5, ventanaMs: 15 * 60 * 1000 },
