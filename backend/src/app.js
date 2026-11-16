@@ -13,7 +13,7 @@ const rutasContenidos = require("./rutas/contenidos");
 const rutasBorradores = require("./rutas/borradores");
 const rutasAuditoria = require("./rutas/auditoria");
 const { auditar } = require("./auditoria/registro");
-
+const path = require("path");
 const MENSAJES_MULTER = {
   LIMIT_FILE_SIZE: "Un archivo supera el máximo de 10 MB.",
   LIMIT_FILE_COUNT: "Se permiten hasta 8 adjuntos por versión.",
