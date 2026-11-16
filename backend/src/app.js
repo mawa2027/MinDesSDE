@@ -50,17 +50,22 @@ function crearApp() {
     strictTransportSecurity: config.produccion,
   }));
 
-  // API
-  app.use("/api", auth.verificarOrigen, express.json({ limit: "400kb" }), auth.cargarUsuario, auth.exigirClaveDefinitiva);
-  app.use("/api", auditar);
+  // Middleware base para toda la API (origen + JSON), SIN exigir sesión
+  app.use("/api", auth.verificarOrigen, express.json({ limit: "400kb" }));
+
+  // Rutas públicas: no requieren sesión
   app.get("/api/salud", (req, res) => res.json({ ok: true }));
   app.use("/api/auth", rutasAuth);
   app.use("/api/publico", rutasPublico);
+
+  // A partir de acá, se requiere sesión (rutas internas)
+  app.use("/api", auth.cargarUsuario, auth.exigirClaveDefinitiva);
+  app.use("/api", auditar);
   app.use("/api", rutasAuditoria);
   app.use("/api", rutasBorradores);
   app.use("/api", rutasContenidos);
 
-  // Config dinámico para el frontend (antes del static)
+  // Config dinámico para el frontend
   app.get("/js/config.js", (req, res) => {
     res.set("Cache-Control", "no-store");
     res.type("application/javascript").send(
@@ -80,7 +85,7 @@ function crearApp() {
     res.redirect("/frontend/panel.html");
   });
 
-  // Portal público de Nexo: REDIRECT (no sendFile), para que las rutas relativas funcionen
+  // Portal público de Nexo
   app.get("/", (req, res) => {
     res.redirect("/frontend/publico.html");
   });
