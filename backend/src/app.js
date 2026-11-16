@@ -83,8 +83,8 @@ function crearApp() {
 
   // Portal público en la raíz (landing del Ministerio con noticias)
   app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../../index.html"));
-  });
+  res.sendFile(path.join(__dirname, "../../frontend/publico.html"));
+});
 
   // Archivos estáticos (sirve /app completo: index.html, centro-dia.html, frontend/panel.html, etc.)
   app.use(express.static(config.carpetaFrontend, { dotfiles: "ignore" }));
