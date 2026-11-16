@@ -13,6 +13,7 @@ const rutasContenidos = require("./rutas/contenidos");
 const rutasBorradores = require("./rutas/borradores");
 const rutasAuditoria = require("./rutas/auditoria");
 const { auditar } = require("./auditoria/registro");
+
 const MENSAJES_MULTER = {
   LIMIT_FILE_SIZE: "Un archivo supera el máximo de 10 MB.",
   LIMIT_FILE_COUNT: "Se permiten hasta 8 adjuntos por versión.",
@@ -40,11 +41,11 @@ function manejarErrores(error, req, res, next) {
 function crearApp() {
   const app = express();
   app.disable("x-powered-by");
-  if (config.confiarProxy) app.set("trust proxy", config.confiarProxy); // así req.ip es la del cliente real
+  if (config.confiarProxy) app.set("trust proxy", config.confiarProxy);
 
-  // Cabeceras de seguridad. Se permiten las fuentes de Google que usa el diseño.
+  // Cabeceras de seguridad
   const directivas = helmet.contentSecurityPolicy.getDefaultDirectives();
-  delete directivas["upgrade-insecure-requests"]; // el sitio también corre en http://localhost
+  delete directivas["upgrade-insecure-requests"];
   app.use(helmet({
     contentSecurityPolicy: { directives: directivas },
     strictTransportSecurity: config.produccion,
@@ -52,15 +53,15 @@ function crearApp() {
 
   // API
   app.use("/api", auth.verificarOrigen, express.json({ limit: "400kb" }), auth.cargarUsuario, auth.exigirClaveDefinitiva);
-  app.use("/api", auditar); // registra automáticamente cada movimiento relevante (ver auditoria/catalogo.js)
+  app.use("/api", auditar);
   app.get("/api/salud", (req, res) => res.json({ ok: true }));
   app.use("/api/auth", rutasAuth);
   app.use("/api/publico", rutasPublico);
   app.use("/api", rutasAuditoria);
-  app.use("/api", rutasBorradores); // antes que contenidos: /contenidos/:id/borrador es más específico
+  app.use("/api", rutasBorradores);
   app.use("/api", rutasContenidos);
 
-  // El frontend usa este archivo para saber que debe hablar con el servidor y no con la demo.
+  // Config dinámico para el frontend (debe ir antes del static)
   app.get("/js/config.js", (req, res) => {
     res.set("Cache-Control", "no-store");
     res.type("application/javascript").send(
@@ -68,20 +69,26 @@ function crearApp() {
     );
   });
 
-  // Cliente para los sitios satélite (frontend/sitios/): cada sitio lo carga desde su propio dominio con
-  // <script src="https://<nexo>/sitios/nexo-sitio.js">. Helmet marca todo como "same-origin", lo que el navegador
-  // aplica también a scripts y hojas de estilo de otro origen: acá se habilita solo para esta carpeta.
-    // La raíz muestra el panel de Nexo (no la landing de los sitios satélite)
-  app.get("/", (req, res) => {
-  res.redirect("/frontend/panel.html");
-});
-  app.use(express.static(config.carpetaFrontend, { dotfiles: "ignore" }));
+  // Cabeceras CORS para los sitios satélite (antes del static, para que apliquen)
   app.use("/sitios", (req, res, next) => {
     res.set("Cross-Origin-Resource-Policy", "cross-origin");
     res.set("Access-Control-Allow-Origin", "*");
     next();
   });
-    app.use(express.static(config.carpetaFrontend, { dotfiles: "ignore" }));
+
+  // Panel de gestión accesible desde /panel
+  app.get("/panel", (req, res) => {
+    res.redirect("/frontend/panel.html");
+  });
+
+  // Portal público en la raíz (landing del Ministerio con noticias)
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../index.html"));
+  });
+
+  // Archivos estáticos (sirve /app completo: index.html, centro-dia.html, frontend/panel.html, etc.)
+  app.use(express.static(config.carpetaFrontend, { dotfiles: "ignore" }));
+
   app.use(manejarErrores);
   return app;
 }
