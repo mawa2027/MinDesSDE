@@ -73,9 +73,8 @@ function crearApp() {
   // aplica también a scripts y hojas de estilo de otro origen: acá se habilita solo para esta carpeta.
     // La raíz muestra el panel de Nexo (no la landing de los sitios satélite)
   app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../../frontend/panel.html"));
-  });
-
+  res.redirect("/frontend/panel.html");
+});
   app.use(express.static(config.carpetaFrontend, { dotfiles: "ignore" }));
   app.use("/sitios", (req, res, next) => {
     res.set("Cross-Origin-Resource-Policy", "cross-origin");
