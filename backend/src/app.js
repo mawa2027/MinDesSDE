@@ -43,7 +43,6 @@ function crearApp() {
   app.disable("x-powered-by");
   if (config.confiarProxy) app.set("trust proxy", config.confiarProxy);
 
-  // Cabeceras de seguridad
   const directivas = helmet.contentSecurityPolicy.getDefaultDirectives();
   delete directivas["upgrade-insecure-requests"];
   app.use(helmet({
@@ -61,7 +60,7 @@ function crearApp() {
   app.use("/api", rutasBorradores);
   app.use("/api", rutasContenidos);
 
-  // Config dinámico para el frontend (debe ir antes del static)
+  // Config dinámico para el frontend (antes del static)
   app.get("/js/config.js", (req, res) => {
     res.set("Cache-Control", "no-store");
     res.type("application/javascript").send(
@@ -69,24 +68,24 @@ function crearApp() {
     );
   });
 
-  // Cabeceras CORS para los sitios satélite (antes del static, para que apliquen)
+  // CORS para sitios satélite (antes del static)
   app.use("/sitios", (req, res, next) => {
     res.set("Cross-Origin-Resource-Policy", "cross-origin");
     res.set("Access-Control-Allow-Origin", "*");
     next();
   });
 
-  // Panel de gestión accesible desde /panel
+  // Panel de gestión
   app.get("/panel", (req, res) => {
     res.redirect("/frontend/panel.html");
   });
 
-  // Portal público en la raíz (landing del Ministerio con noticias)
+  // Portal público de Nexo: REDIRECT (no sendFile), para que las rutas relativas funcionen
   app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../frontend/publico.html"));
-});
+    res.redirect("/frontend/publico.html");
+  });
 
-  // Archivos estáticos (sirve /app completo: index.html, centro-dia.html, frontend/panel.html, etc.)
+  // Archivos estáticos
   app.use(express.static(config.carpetaFrontend, { dotfiles: "ignore" }));
 
   app.use(manejarErrores);
