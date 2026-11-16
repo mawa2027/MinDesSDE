@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nexo Institucional — Ingreso</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="img/icono-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="img/icono-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Gelasio:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <main class="pagina">
+    <div class="tarjeta">
+      <img class="logo-login" src="img/logo-am.png" alt="Dirección General de Adultos Mayores">
+      <p class="etiqueta--login">PORTAL INTERNO</p>
+      <h1 class="titulo">Nexo Institucional</h1>
+
+      <form id="form-login" novalidate>
+        <div id="campos-login">
+          <label for="l-email">Correo institucional</label>
+          <input id="l-email" name="email" type="email" autocomplete="username" required>
+
+          <label for="l-password">Contraseña</label>
+          <input id="l-password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+
+        <button id="btn-ingresar" type="submit">
+          <span class="btn__texto">Ingresar</span>
+        </button>
+
+        <p id="error-login" role="alert" hidden></p>
+      </form>
+    </div>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/archivos-demo.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/api-servidor.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
