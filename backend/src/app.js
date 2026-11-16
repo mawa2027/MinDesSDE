@@ -71,6 +71,12 @@ function crearApp() {
   // Cliente para los sitios satélite (frontend/sitios/): cada sitio lo carga desde su propio dominio con
   // <script src="https://<nexo>/sitios/nexo-sitio.js">. Helmet marca todo como "same-origin", lo que el navegador
   // aplica también a scripts y hojas de estilo de otro origen: acá se habilita solo para esta carpeta.
+    // La raíz muestra el panel de Nexo (no la landing de los sitios satélite)
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "../../frontend/panel.html"));
+  });
+
+  app.use(express.static(config.carpetaFrontend, { dotfiles: "ignore" }));
   app.use("/sitios", (req, res, next) => {
     res.set("Cross-Origin-Resource-Policy", "cross-origin");
     res.set("Access-Control-Allow-Origin", "*");
